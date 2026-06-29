@@ -11,18 +11,23 @@ package modelo;
 public class Mago extends Personaje {
 
     public Mago(String nombre) {
+
         super(nombre, 200, 50, 15, 150);
+
     }
 
     @Override
     public void atacar(Personaje enemigo) {
-        System.out.println(nombre + " lanza hechizo básico");
-        enemigo.recibirDaño(ataque);
+
+        System.out.println(nombre + " lanza un hechizo.");
+
     }
 
     @Override
     public void usarHabilidadEspecial(Personaje enemigo) {
-        System.out.println(nombre + " usa METEORO");
-        enemigo.recibirDaño(ataque + 50);
+
+        System.out.println(nombre + " usa METEORO.");
+
     }
+
 }

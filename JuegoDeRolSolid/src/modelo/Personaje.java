@@ -9,7 +9,12 @@ package modelo;
  * @author Sophi González
  */
 
-public abstract class Personaje {
+
+import interfaces.IAtacante;
+import interfaces.IHabilidadEspecial;
+import servicios.ServicioInventario;
+
+public abstract class Personaje implements IAtacante, IHabilidadEspecial {
 
     protected String nombre;
     protected int vida;
@@ -19,45 +24,111 @@ public abstract class Personaje {
     protected int experiencia;
     protected int energia;
 
+    protected ServicioInventario inventario = new ServicioInventario();
+
     public Personaje(String nombre, int vida, int ataque, int defensa, int energia) {
+
         this.nombre = nombre;
         this.vida = vida;
         this.ataque = ataque;
         this.defensa = defensa;
         this.energia = energia;
+
         this.nivel = 1;
         this.experiencia = 0;
     }
 
-    public void recibirDaño(int daño) {
-        int real = Math.max(0, daño - defensa);
-        vida -= real;
+    public int getAtaqueTotal() {
+        return ataque + inventario.getBonusAtaque();
+    }
 
-        System.out.println(nombre + " recibe " + real + " de daño. Vida: " + vida);
+    public int getDefensaTotal() {
+        return defensa + inventario.getBonusDefensa();
+    }
+
+    public void recibirDaño(int daño) {
+
+        vida -= daño;
+
+        if (vida < 0) {
+            vida = 0;
+        }
+
     }
 
     public void subirNivel() {
+
         if (experiencia >= 100) {
+
             nivel++;
             experiencia = 0;
+
             vida += 20;
             ataque += 5;
             defensa += 5;
+            energia += 10;
 
-            System.out.println(nombre + " subió a nivel " + nivel);
+            System.out.println(nombre + " subió al nivel " + nivel);
+
         }
+
     }
 
-    public boolean estaVivo() {
-        return vida > 0;
+    public ServicioInventario getInventario() {
+        return inventario;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public abstract void atacar(Personaje enemigo);
+    public int getVida() {
+        return vida;
+    }
 
-    public abstract void usarHabilidadEspecial(Personaje enemigo);
+    public int getAtaque() {
+        return ataque;
+    }
+
+    public int getDefensa() {
+        return defensa;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public int getExperiencia() {
+        return experiencia;
+    }
+
+    public int getEnergia() {
+        return energia;
+    }
+
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    public void setAtaque(int ataque) {
+        this.ataque = ataque;
+    }
+
+    public void setDefensa(int defensa) {
+        this.defensa = defensa;
+    }
+
+    public void setEnergia(int energia) {
+        this.energia = energia;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    public void setExperiencia(int experiencia) {
+        this.experiencia = experiencia;
+    }
 
 }
