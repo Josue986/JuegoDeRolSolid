@@ -1,4 +1,6 @@
-package Objetos;
+package modelo;
+
+import modelo.Armadura;
 
 /**
  *
@@ -6,6 +8,6 @@ package Objetos;
  */
 public class Grebas extends Armadura{
     public Grebas(String nombre, int bonificadorDefensa) {
-        super(nombre, bonificadorDefensa);
+        super(nombre, 15);
     }
 }

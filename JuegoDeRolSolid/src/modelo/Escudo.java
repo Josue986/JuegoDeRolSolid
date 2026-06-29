@@ -1,4 +1,6 @@
-package Objetos;
+package modelo;
+
+import modelo.Armadura;
 
 /**
  *
@@ -6,6 +8,6 @@ package Objetos;
  */
 public class Escudo extends Armadura{
     public Escudo(String nombre, int bonificadorDefensa) {
-        super(nombre, bonificadorDefensa);
+        super(nombre, 5);
     }
 }

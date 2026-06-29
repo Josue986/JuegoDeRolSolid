@@ -1,4 +1,4 @@
-package Objetos;
+package modelo;
 
 /**
  *
@@ -6,6 +6,6 @@ package Objetos;
  */
 public class Arco extends Arma{
     public Arco(String nombre, int bonificadorAtaque) {
-        super(nombre, bonificadorAtaque);
+        super(nombre, 20);
     }
 }

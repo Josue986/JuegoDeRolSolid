@@ -1,16 +1,19 @@
-package Objetos;
+package servicios;
+import modelo.Arma;
+import modelo.Armadura;
+import modelo.Objeto;
 import java.util.ArrayList;
 
 /**
  *
  * @author jotue
  */
-public class Inventario {
+public class ServicioInventario {
     private ArrayList<Objeto> items;
     private Arma armaEquipada;
     private Armadura armaduraEquipada;
 
-    public Inventario() {
+    public ServicioInventario() {
         this.items = new ArrayList<>();
     }
 
